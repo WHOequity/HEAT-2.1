@@ -280,8 +280,8 @@ names(summeasurevect) <- paste0(summeasure$measure_name, " (", summeasure$measur
 # *****************************************************************************
 
 if(.rdata[['HEATversion']] == "whodata"){
-txt1 <- "Source: Health Equity Assessment Toolkit (HEAT): Software for exploring and comparing health inequalities in countries.\nBuilt-in database edition. Version 2.0. Geneva, World Health Organization, 2017."
-txt2 <- "Data source: The disaggregated data used in this version were drawn from the WHO Health Equity Monitor database (2016 update)\nwhich may have been revised or updated since that time. The most recent version of that database is available on the WHO website."
+  txt1 <- "Source: Health Equity Assessment Toolkit (HEAT): Software for exploring and comparing health inequalities in countries.\nBuilt-in database edition. Version 2.1. Geneva; World Health Organization; 2018."
+  txt2 <- "Data source: The disaggregated data used in this version were drawn from the WHO Health Equity Monitor database (2016 update)\nwhich may have been revised or updated since that time. The most recent version of that database is available on the WHO website."
 }
 
 if(.rdata[['HEATversion']] == "upload"){
@@ -304,7 +304,7 @@ txt2 <- "Upload database edition. Version 1.0. Geneva, World Health Organization
 # *****************************************************************************
 
 if(.rdata[['HEATversion']] == "whodata"){
-txt1 <- "Health Equity Assessment Toolkit (HEAT): Software for exploring and comparing health inequalities in countries. Built-in database edition. Version 2.0. Geneva; World Health Organization; 2017."
+txt1 <- "Health Equity Assessment Toolkit (HEAT): Software for exploring and comparing health inequalities in countries.\nBuilt-in database edition. Version 2.1. Geneva; World Health Organization; 2018."
 txt2 <- "The disaggregated data used in this version were drawn from the WHO Health Equity Monitor database (2016 update) which may have been revised or updated since that time. The most recent version of that database is available on the WHO website."
 txt3 <- "Disaggregated are available from: http://apps.who.int/gho/data/node.main.HE-1540?lang=en"
 }
