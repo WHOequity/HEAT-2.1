@@ -85,19 +85,22 @@ shinyUI(
     # to change the navbar if the upload version is being
     # used (remove logo and and add "Plus")
     
-    tags$head(HTML("<script type='text/javascript'>
-                      $( document ).ready(function() {
-
-      $('#myModal').modal('show');
-      $('#modal-license').load('license_agreement.html');
-      if($('#backimg-upload').length){
-      $('.whoimg').remove();
-      $('#filename_progress').remove();
-      $('.dropdown').addClass('pull-right');
-      $('.navtext').text($('.navtext').text().concat(' Plus'))
-      }
-                      });
-                      </script>")),
+    tags$script(HTML("
+      $(document).ready(function() {
+        $('#myModal').modal('show');
+        $('#modal-license').load('license_agreement.html');
+        if ($('#backimg-upload').length) {
+          $('.whoimg').remove();
+          $('.navtext').text($('.navtext').text().concat(' Plus'));
+        }
+      });"
+    )),
+    
+    tags$script(HTML("
+      $(document).on('shiny:connected', function(e) {
+        $('ul.dropdown-menu').addClass('dropdown-menu-right');
+      });"
+    )),
     
     navbarPage(title =  HTML('<span class="navtitle"><a rel="home" href="#" title="World Health Organization"><img class="whoimg" src="who_logo_white40px.png"></a><span class="navtext">Health Equity Assessment Toolkit</span></span>'),
                id= "who_heat", 
