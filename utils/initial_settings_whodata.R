@@ -95,7 +95,7 @@ geo_palette <- '#5c87bc'
 # *****************************************************************************
 
 #.rdata[['plot_height']] <<- 600
-.rdata[['countryinfo']] <<- readRDS("data/countryinfo.RDS")
+.rdata[['countryinfo']] <<- readRDS("../Data/countryinfo.RDS")
 .rdata[['countryinfo']]$country[.rdata[['countryinfo']]$country == "Côte d'Ivoire"] <<- "Cote d'Ivoire"
 
 
@@ -105,7 +105,7 @@ geo_palette <- '#5c87bc'
 # *****************************************************************************
 
 
-strata <- readRDS("data/strata.RDS")
+strata <- readRDS("../Data/strata.RDS")
 names(strata) <- convert_names_to_old(names(strata), new_to_old_names)
 strata$country[strata$country == "C\xf4te d'Ivoire"] <- "Cote d'Ivoire"
 # filt_indic <- quote(d)
@@ -190,7 +190,7 @@ if(is.null(keep_region) || keep_region == ""){
 # Read in dimensions
 # *****************************************************************************
 
-dimensions <- readRDS("data/dimensions.RDS")
+dimensions <- readRDS("../Data/dimensions.RDS")
 names(dimensions) <- convert_names_to_old(names(dimensions), new_to_old_names)
 .rdata[['dimension_details']] <<- filter(dimensions, !dimension%in%drop_dimension)
 rm(dimensions)
@@ -207,14 +207,14 @@ rm(dimensions)
 # Read in maindata, inequality data and national data
 # *****************************************************************************
 
-maindata <-readRDS("data/maindata.RDS")
+maindata <-readRDS("../Data/maindata.RDS")
 names(maindata) <- convert_names_to_old(names(maindata), new_to_old_names)
 maindata$country[maindata$country == "C\xf4te d'Ivoire"] <- "Cote d'Ivoire"
 maindata <- data.table(maindata)
 setkey(maindata, country, year, indic, dimension, source)
 
 
-inequals <- readRDS("data/inequals.RDS")
+inequals <- readRDS("../Data/inequals.RDS")
 names(inequals) <- convert_names_to_old(names(inequals), new_to_old_names)
 inequals <- data.table(inequals)
 setkey(inequals, country, year, indic, dimension, measure, source)
@@ -320,7 +320,7 @@ anchor <- filter(.rdata[['countryinfo']], country == focus_country)
 # *****************************************************************************
 # Read in years and set years
 # *****************************************************************************
-.rdata[['years']]<<-readRDS("data/years.RDS")
+.rdata[['years']]<<-readRDS("../Data/years.RDS")
 #rev(sort(c(1994, 1997,2002, 2007, 2012)))#
 .rdata[['all_years']]<<-getFilteredYear(focus_country)#c(1994, 1997,2002, 2007, 2012)
 

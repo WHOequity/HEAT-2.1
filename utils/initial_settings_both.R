@@ -149,7 +149,7 @@ table_options <<- NULL
 # *****************************************************************************
 # Read in summary measures and order
 # *****************************************************************************
-summeasure <- readRDS("data/HEAT-data/summeasures.RDS")
+summeasure <- readRDS("../Data/HEAT-data/summeasures.RDS")
 summeasure$measure_abbr <- trimws(summeasure$measure_abbr)
 summeasure$measure_name <- trimws(summeasure$measure_name)
 summeasure <- arrange(summeasure, measure_name)

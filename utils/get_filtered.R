@@ -32,17 +32,22 @@ getFilteredCountries <- function(WBgroup=NULL, WHOregion=NULL)
   filt_WBgroup   <- TRUE
   filt_WHOregion <- TRUE
   
+  countries <- .rdata[["countryinfo"]]
   
-  if(!is.null(WBgroup) && all(WBgroup != "")) 
-    filt_WBgroup <- quote(wbincome %in% WBgroup)
+  if(!is.null(WBgroup) && all(WBgroup != "")) {
+    # filt_WBgroup <- quote(wbincome %in% WBgroup)
+    countries <- filter(countries, wbincome %in% WBgroup)
+  }
   
-  if(!is.null(WHOregion) && all(WHOregion != "")) 
-    filt_WHOregion <- quote(whoreg6_name %in% WHOregion)
+  if(!is.null(WHOregion) && all(WHOregion != "")) {
+    # filt_WHOregion <- quote(whoreg6_name %in% WHOregion)
+    countries <- filter(countries, whoreg6_name %in% WHOregion)
+  }
+    
+  countries <- pull(countries, country)
   
-  countries <- filter(.rdata[['countryinfo']], filt_WBgroup, filt_WHOregion) %>% 
-    select(country) %>% .$country
-  
-  
+  # countries <- filter(.rdata[['countryinfo']], filt_WBgroup, filt_WHOregion) %>% 
+  #   select(country) %>% .$country
   
   return(countries)
   
@@ -52,9 +57,9 @@ getFilteredCountries <- function(WBgroup=NULL, WHOregion=NULL)
 
 
 getFilteredSource <- function(countryname){
-  filt_country   <- quote(country %in% countryname)
+  # filt_country   <- quote(country %in% countryname)
   
-  sources <- dplyr::filter(.rdata[['countryyrsource']], filt_country) %>%
+  sources <- dplyr::filter(.rdata[['countryyrsource']], country %in% countryname) %>% # filt_country) %>%
     arrange(source)
   
   
@@ -66,9 +71,9 @@ getFilteredSource <- function(countryname){
 getFilteredYear <-  function(countryname, datasource = .rdata[["focus_data_source"]]){
   
   
-  filt_country   <- quote(country %in% countryname)
+  # filt_country   <- quote(country %in% countryname)
   
-  years <- filter(.rdata[['years']], filt_country) %>%
+  years <- filter(.rdata[['years']], country %in% countryname) %>%  #filt_country) %>%
     arrange(desc(year))
   
   years[years$source%in%datasource,] %>% .$year
