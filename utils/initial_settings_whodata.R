@@ -200,7 +200,7 @@ rm(dimensions)
 
 
 .rdata[['equity_dimensions']] <<- sort(unique(.rdata[['dimension_details']]$dimension))
-.rdata[['geo_dimension']] <<- unique(.rdata[['dimension_details']]$dimension[.rdata[['dimension_details']]$dimension_type=="region"])
+.rdata[['geo_dimension']] <<- "Subnational region" # unique(.rdata[['dimension_details']]$dimension[.rdata[['dimension_details']]$dimension_type=="region"])
 
 
 # *****************************************************************************
