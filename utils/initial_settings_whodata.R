@@ -107,7 +107,7 @@ geo_palette <- '#5c87bc'
 
 strata <- readRDS("../Data/strata.RDS")
 names(strata) <- convert_names_to_old(names(strata), new_to_old_names)
-strata$country[strata$country == "C\xf4te d'Ivoire"] <- "Cote d'Ivoire"
+strata$country[strata$country == "Côte d'Ivoire"] <- "Cote d'Ivoire"
 # filt_indic <- quote(d)
 # 
 # if(!is.null(drop_country)) strata <- strata[!.(drop_country)]
@@ -209,7 +209,7 @@ rm(dimensions)
 
 maindata <-readRDS("../Data/maindata.RDS")
 names(maindata) <- convert_names_to_old(names(maindata), new_to_old_names)
-maindata$country[maindata$country == "C\xf4te d'Ivoire"] <- "Cote d'Ivoire"
+maindata$country[maindata$country == "Côte d'Ivoire"] <- "Cote d'Ivoire"
 maindata <- data.table(maindata)
 setkey(maindata, country, year, indic, dimension, source)
 
